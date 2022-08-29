@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
-    entry: 'js/index.js',
+    entry: './public/js/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'main.bundle.js'
