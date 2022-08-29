@@ -19,6 +19,7 @@ self.addEventListener('install', function(event) {
                 './icons/icon-144x144.png',
                 './icons/icon-152x152.png',
                 './icons/icon-384x384.png',
+                './manifest.json',
             ]);
         })
     );
@@ -41,15 +42,16 @@ self.addEventListener('activate', function(event) {
 );
 
 self.addEventListener('fetch', function(event) {
+    console.log(event.request.url);
     event.respondWith(
-        caches.match(event.request).then(function(response) {
-            if (response) {
-                return response;
+        caches.match(event.request).then(function(request) {
+            if (request) {
+                return request;
             } else {
                 return fetch(event.request).then(function(response) {
                     return caches.open(CACHE_NAME).then(function(cache) {
                         cache.put(event.request.url, response.clone());
-                        return response;
+                        return fetch;
                     }
                     );
                 }
