@@ -42,7 +42,7 @@ self.addEventListener('activate', function(event) {
 );
 
 self.addEventListener('fetch', function(event) {
-    console.log(event.request.url);
+    //console.log(event.request.url);
     event.respondWith(
         caches.match(event.request).then(function(request) {
             if (request) {
@@ -57,11 +57,14 @@ self.addEventListener('fetch', function(event) {
                 }
                 );
             }
-        }
+       }
         )
     );
 }
 );
+    //);
+//}
+//);
 
 /*
 caches.match(event.request).then (function (response) {
